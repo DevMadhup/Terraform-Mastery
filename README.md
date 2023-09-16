@@ -2,8 +2,8 @@
 
 # List of automation resources using terraform
 
-1) Creating EC2 Instance using terraform
+1) EC2 Instance creation using terraform
 ### filename:  EC2_instance_creation.tf
 
-2) Creating S3 Bucket using terraform
+2)  S3 Bucket creation using terraform
 ### filename:  S3.tf
