@@ -9,4 +9,4 @@
 #### File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/EC2_instance_creation.tf">EC2_instance_creation.tf</a> 
 
 3)  S3 Bucket creation using terraform
-#### File: File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/s3.tf">s3.tf</a 
+#### File: File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/s3.tf">s3.tf</a>
