@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "My-key"
-  public_key = file("/root/.ssh/terra-key.pub")
+  public_key = file("/home/ubuntu/Terraform_automation/CreateEC2/terra-key.pub")
 }
 
 resource "aws_default_vpc" "default" {
@@ -23,6 +23,30 @@ resource "aws_security_group" "allow_user_to_connect" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  egress {
+    description = " allow all outgoing traffic "
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "port 80 allow"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "port 443 allow"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "mysecurity"
   }
@@ -36,5 +60,5 @@ resource "aws_instance" "testinstance" {
   tags = {
     Name = "Automate"
   }
-
+  user_data = file("/home/ubuntu/Terraform_automation/CreateEC2/init.sh")
 }
