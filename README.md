@@ -1,12 +1,14 @@
-# Terraform_automation
+# Terraform-Mastery
 
-# List of automation resources using terraform
+- This repository helps you to create different types of local and AWS resources using terraform with best practices
 
-### 1) Local file creation:
-#### File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/localFile.tf">localFile.tf</a>
+### Table of content:
 
-### 2) EC2 Instance creation:
-#### File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/CreateEC2/EC2_instance_creation.tf">EC2_instance_creation.tf</a> 
+| AWS Service    | Terraform script |
+| -------- | ------- |
+| Local file | <a href="https://github.com/DevMadhup/Terraform-Mastery/tree/main/CreateLocalFile">Create local file</a>     |
+| EC2 Instance | <a href="https://github.com/DevMadhup/Terraform-Mastery/tree/main/CreateEC2">Create an EC2 Instance</a>     |
+| EKS Cluster | <a href="https://github.com/DevMadhup/Terraform-Mastery/tree/main/CreateEKS">Create an EKS Cluster</a>     |
+| S3 Bucket | <a href="https://github.com/DevMadhup/Terraform-Mastery/tree/main/CreateS3">Create S3 Bucket</a>     |
 
-### 3)  S3 Bucket creation:
-#### File: File: <a href="https://github.com/DevMadhup/Terraform_automation/blob/main/s3.tf">s3.tf</a>
+
