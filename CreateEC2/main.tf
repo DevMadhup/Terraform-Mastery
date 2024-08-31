@@ -1,9 +1,5 @@
-provider "aws" {
-  region = "us-west-1"
-}
-
 resource "aws_key_pair" "deployer" {
-  key_name   = "My-key"
+  key_name   = var.ec2-instance-key
   public_key = file("/home/ubuntu/.ssh/id_ed25519.pub")
 }
 
@@ -12,7 +8,7 @@ resource "aws_default_vpc" "default" {
 }
 
 resource "aws_security_group" "allow_user_to_connect" {
-  name        = "allow TLS"
+  name        = "Allow TLS"
   description = "Allow user to connect"
   vpc_id      = aws_default_vpc.default.id
   ingress {
@@ -48,17 +44,17 @@ resource "aws_security_group" "allow_user_to_connect" {
   }
 
   tags = {
-    Name = "mysecurity"
+    Name = var.ec2-security-tag
   }
 }
 
 resource "aws_instance" "testinstance" {
-  ami             = "ami-0d53d72369335a9d6"
-  instance_type   = "t2.micro"
+  ami             = var.ec2-instance-ami
+  instance_type   = var.ec2-instance-type
   key_name        = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.allow_user_to_connect.name]
   tags = {
-    Name = "Automate"
+    Name = var.aws-ec2-instance-tag
   }
   user_data = file("/home/ubuntu/Terraform-Mastery/CreateEC2/init.sh")
 }
