@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-1"
 }
 
 resource "aws_key_pair" "deployer" {
   key_name   = "My-key"
-  public_key = file("/home/ubuntu/Terraform_automation/CreateEC2/terra-key.pub")
+  public_key = file("/home/ubuntu/.ssh/id_ed25519.pub")
 }
 
 resource "aws_default_vpc" "default" {
@@ -53,12 +53,12 @@ resource "aws_security_group" "allow_user_to_connect" {
 }
 
 resource "aws_instance" "testinstance" {
-  ami             = "ami-053b0d53c279acc90"
+  ami             = "ami-0d53d72369335a9d6"
   instance_type   = "t2.micro"
   key_name        = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.allow_user_to_connect.name]
   tags = {
     Name = "Automate"
   }
-  user_data = file("/home/ubuntu/Terraform_automation/CreateEC2/init.sh")
+  user_data = file("/home/ubuntu/Terraform-Mastery/CreateEC2/init.sh")
 }
