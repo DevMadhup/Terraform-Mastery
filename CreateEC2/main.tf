@@ -1,11 +1,21 @@
+#################################
+# Resources
+#################################
+
+# Resource key pair
 resource "aws_key_pair" "deployer" {
   key_name   = var.ec2-instance-key
   public_key = file("/home/ubuntu/.ssh/id_ed25519.pub")
 }
 
+# Resource default VPC
 resource "aws_default_vpc" "default" {
 
 }
+
+##################################
+# Networking
+##################################
 
 resource "aws_security_group" "allow_user_to_connect" {
   name        = "Allow TLS"
@@ -47,6 +57,10 @@ resource "aws_security_group" "allow_user_to_connect" {
     Name = var.ec2-security-tag
   }
 }
+
+###############################
+# EC2 Instance
+###############################
 
 resource "aws_instance" "testinstance" {
   ami             = var.ec2-instance-ami
